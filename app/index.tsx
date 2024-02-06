@@ -8,7 +8,7 @@ export default function Page() {
   const [uri, setUri] = useState("https://www.youtube.com/");
 
   const mailLink = () => {
-    console.log(ref);
+    setUri("https://www.naver.com");
   };
 
   return (
@@ -24,7 +24,7 @@ export default function Page() {
         source={{ uri: uri }}
         onNavigationStateChange={(e) => {
           setNavState(e);
-          // setUri(e.uri);
+          setUri(e.url);
         }}
         allowsBackForwardNavigationGestures={true}
       />
@@ -48,3 +48,4 @@ const styles = StyleSheet.create({
     padding: 24,
   },
 });
+
