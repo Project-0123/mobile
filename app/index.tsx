@@ -5,12 +5,12 @@ import { WebView } from "react-native-webview";
 import Sidebar from "components/sidebar/sidebar";
 
 export default function Page() {
-  const [ref, setNavState] = useWebViewStack();
-  const [uri, setUri] = useState("http://172.30.1.52:3000/feedlist/");
+  const [webViewRef, setNavState] = useWebViewStack();
+  const [uri, setUri] = useState("http://172.30.1.52:3000/wordseed/");
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleOnMessage = (e) => {
-    console.log(e.nativeEvent.data);
+    // console.log(e.nativeEvent.data);
     setShowSidebar(true);
   };
 
@@ -23,10 +23,10 @@ export default function Page() {
   }, [uri]);
   return (
     <View style={[styles.screen, showSidebar && styles.screenDarker]}>
-      {showSidebar && <Sidebar setUri={setUri} />}
+      {showSidebar && <Sidebar webViewRef={webViewRef} />}
       <WebView
         style={[styles.container, showSidebar && styles.applySlidebarMode]}
-        ref={ref}
+        ref={webViewRef}
         source={{ uri: uri }}
         onMessage={handleOnMessage}
         onTouchStart={handleTouchEnd}
