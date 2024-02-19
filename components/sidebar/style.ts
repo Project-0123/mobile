@@ -1,5 +1,10 @@
 import { StyleSheet } from "react-native";
 
+const white = "#f8f8f8";
+const black = "#484848";
+const h3 = 18;
+const iconSize = 30;
+
 const styles = StyleSheet.create({
   sidebar: {
     position: "absolute",
@@ -7,7 +12,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: "100%",
     width: "70%",
-    backgroundColor: "white",
+    backgroundColor: white,
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
     zIndex: 100,
@@ -20,15 +25,24 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     height: "10%",
     width: "100%",
-    paddingHorizontal: "10%",
-    borderBottomWidth: 0.5,
+    paddingLeft: "10%",
+    paddingRight: "5%",
+    borderBottomWidth: 1,
     borderBlockColor: "black",
+  },
+  headerFont: {
+    fontSize: h3,
+    color: black,
+  },
+  headerProfile: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   main: {
     display: "flex",
     height: "90%",
     width: "100%",
-    backgroundColor: "white",
     paddingTop: "10%",
     alignItems: "center",
   },
@@ -43,16 +57,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 55,
     gap: 40,
-    backgroundColor: "white",
     borderBottomWidth: 0.3,
     borderBlockColor: "black",
   },
   describe: {
     flexGrow: 1,
+    fontSize: h3,
+    color: black,
   },
   icon: {
-    // position: "absolute",
-    // left: 0,
+    width: iconSize,
+    height: iconSize,
   },
 });
 
