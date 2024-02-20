@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -29,9 +31,6 @@
         "projectId": "24cbfb4a-7765-4f15-a367-fefc252e48b6"
       }
     },
-    "owner": "0123",
-    "plugins": ["expo-router"],
-    "scheme": "your-app-scheme"
+    "owner": "0123"
   }
 }
-
