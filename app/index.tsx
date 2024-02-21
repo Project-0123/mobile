@@ -14,7 +14,7 @@ export default function Page() {
     setShowSidebar(true);
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e) => {
     setShowSidebar(false);
   };
 
@@ -24,19 +24,20 @@ export default function Page() {
   return (
     <View style={[styles.screen, showSidebar && styles.screenDarker]}>
       {showSidebar && <Sidebar webViewRef={webViewRef} />}
-      <WebView
-        style={[styles.container, showSidebar && styles.applySlidebarMode]}
-        hideKeyboardAccessoryView={true}
-        ref={webViewRef}
-        source={{ uri: uri }}
-        onMessage={handleOnMessage}
-        onTouchStart={handleTouchEnd}
-        onNavigationStateChange={(e) => {
-          setNavState(e);
-          setUri(e.url);
-        }}
-        allowsBackForwardNavigationGestures={true}
-      />
+      <View style={[styles.webviewWrapper]} onTouchStart={handleTouchEnd}>
+        <WebView
+          style={[styles.container, showSidebar && styles.applySlidebarMode]}
+          hideKeyboardAccessoryView={true}
+          ref={webViewRef}
+          source={{ uri: uri }}
+          onMessage={handleOnMessage}
+          onNavigationStateChange={(e) => {
+            setNavState(e);
+            setUri(e.url);
+          }}
+          allowsBackForwardNavigationGestures={true}
+        />
+      </View>
     </View>
   );
 }
@@ -57,6 +58,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
   },
+  webviewWrapper: {
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
   },
   applySlidebarMode: {
     opacity: 0.5,
-    // pointerEvents: "none",
+    pointerEvents: "none",
   },
 });
 
