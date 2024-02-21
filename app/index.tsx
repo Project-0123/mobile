@@ -6,7 +6,7 @@ import Sidebar from "components/sidebar/sidebar";
 
 export default function Page() {
   const [webViewRef, setNavState] = useWebViewStack();
-  const [uri, setUri] = useState("http://172.30.1.52:3000/wordseed/");
+  const [uri, setUri] = useState("http://172.30.1.52:3000/feedlist/");
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleOnMessage = (e) => {
@@ -26,6 +26,7 @@ export default function Page() {
       {showSidebar && <Sidebar webViewRef={webViewRef} />}
       <WebView
         style={[styles.container, showSidebar && styles.applySlidebarMode]}
+        hideKeyboardAccessoryView={true}
         ref={webViewRef}
         source={{ uri: uri }}
         onMessage={handleOnMessage}
