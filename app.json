@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.todaywordseed.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,7 +31,25 @@
       }
     },
     "owner": "0123",
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "앨범 접근에 허용하시겠습니까?",
+          "cameraPermission": "카메라 접근에 허용하시겠습니까?"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          },
+          "ios": {}
+        }
+      ]
+    ],
     "scheme": "your-app-scheme"
   }
 }

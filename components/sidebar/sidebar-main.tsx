@@ -20,7 +20,11 @@ const menus = {
 export default function SidebarMain({ webViewRef }) {
   const pressHandler = (path: string) => {
     console.log(path);
-    webViewRef.current.postMessage({ data: path });
+    const message = {
+      type: "router",
+      path: path,
+    };
+    webViewRef.current.postMessage(JSON.stringify(message));
   };
 
   return (

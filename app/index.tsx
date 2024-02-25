@@ -1,17 +1,26 @@
 import useWebViewStack from "hooks/useWebViewStack";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
 import Sidebar from "components/sidebar/sidebar";
 
 export default function Page() {
   const [webViewRef, setNavState] = useWebViewStack();
-  const [uri, setUri] = useState("http://172.30.1.52:3000/feedlist/");
+  const [uri, setUri] = useState(
+    `${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/create/한 걸음`
+  );
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleOnMessage = (e) => {
-    // console.log(e.nativeEvent.data);
-    setShowSidebar(true);
+    const message = e.nativeEvent.data;
+
+    switch (message) {
+      case "Open Sidebar":
+        setShowSidebar(true);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleTouchEnd = () => {
@@ -21,6 +30,7 @@ export default function Page() {
   useEffect(() => {
     setShowSidebar(false);
   }, [uri]);
+
   return (
     <View style={[styles.screen, showSidebar && styles.screenDarker]}>
       {showSidebar && <Sidebar webViewRef={webViewRef} />}
